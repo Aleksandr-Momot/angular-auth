@@ -1,0 +1,50 @@
+<div class="container">
+    <form class="card" id="forms" [formGroup]="form" (ngSubmit)="submit()">
+        <h2>Авторизоваться</h2>
+    
+        <div class="auth-error" *ngIf="auth.error$ | async as error">
+            {{error}}
+        </div>
+    
+        <div class="auth--guard-error" *ngIf="message">
+            {{message}}
+        </div>
+    
+        <div class="form-control"
+        [ngClass]="{invalid: form.get('email')?.touched && form.get('email')?.invalid}">
+            <mat-form-field  appearance="outline" class="example-form-field">
+                <mat-label >Email</mat-label>
+                <input formControlName="email" matInput type="text">
+            </mat-form-field>
+            <div *ngIf="form.get('email')?.touched && form.get('email')?.invalid" class="validation">
+                <small *ngIf="form.get('email')?.errors?.required">Введите почту</small>
+                <small *ngIf="form.get('email')?.errors?.email">Введите корректную почту</small>
+            </div>
+        </div>
+    
+        
+    
+        <div class="form-control"
+        [ngClass]="{invalid: form.get('password')?.touched && form.get('password')?.invalid}">
+            <mat-form-field  appearance="outline" class="example-form-field">
+                <mat-label >Password</mat-label>
+                <input formControlName="password" matInput type="password">
+            </mat-form-field>
+            
+            <div class="validation"
+            *ngIf="form.get('password')?.touched && form.get('password')?.invalid"
+            >
+            <small *ngIf="form.get('password')?.errors?.required">Введите пароль</small>
+            <small *ngIf="form.get('password')?.errors?.minlength">Пароль должен составлять не менее 
+                {{form.get('password')?.errors?.minlength.requiredLength}} 
+                символов. Сейчас он 
+                {{form.get('password')?.errors?.minlength.actualLength}} 
+                символов</small>
+            </div>
+        </div>
+    
+        <button class="main-btn" [disabled]="form.invalid" type="submit" mat-raised-button color="primary">Войти</button>
+    
+        
+    </form>
+</div>

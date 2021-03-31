@@ -1,0 +1,31 @@
+.admin-nav-panel {
+    margin-bottom: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    background-color: blue;
+    .main-title {
+        p {
+            font-size: 25px;
+            color: #fff;
+            font-weight: 700;
+        }
+    }
+    .nav-tabs {
+        ul {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            li {
+                list-style-type: none;
+                a {
+                    text-decoration: none;
+                    font-size: 16px;
+                    color: #fff;
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+}
