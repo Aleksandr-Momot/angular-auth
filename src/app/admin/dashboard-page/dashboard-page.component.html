@@ -1,10 +1,44 @@
-<div class="container">
-    <div>
-        <p>IT IS DASHBOARD PAGE</p>
+<div *ngIf="posts.length; else loading">
+    <div class="container">
+        <div class="form-control search-post">
+            <mat-form-field  appearance="outline" class="example-form-field">
+                <mat-label >Поиск...</mat-label>
+                <input [(ngModel)]="searchPost" matInput type="text">
+            </mat-form-field>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Автор</th>
+                    <th>Название</th>
+                    <th>Дата</th>
+                    <th>Действие</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let post of posts | searchPosts:searchPost; let idx = index">
+                    <td>{{ idx + 1 }}</td>
+                    <td>{{ post.author }}</td>
+                    <td>{{ post.title }}</td>
+                    <td>{{ post.date | date: 'medium'}}</td>
+                    <td>
+                        <button [routerLink]="['/admin', 'post', post.id, 'edit']" class="main-btn" type="submit"
+                            mat-raised-button color="primary">Открыть</button>
+                        <a class="remove-post-btn" (click)='remove(post.id)'>Удалить</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
     </div>
-    
-    <button type="submit" mat-raised-button color="primary" (click)="clear()">CLEAR STORAGE</button>    
+
+
 </div>
 
-
-
+<ng-template #loading>
+    <div class="loader">
+        <mat-spinner></mat-spinner>
+        <p>Данные загружаются...</p>
+    </div>
+</ng-template>

@@ -12,6 +12,7 @@ import { catchError, tap } from 'rxjs/operators';
 export class AuthService {
 
     public error$: Subject<string> = new Subject<string>();
+    token!: string;
 
     constructor(private http: HttpClient) {}
 

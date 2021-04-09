@@ -1,5 +1,5 @@
-import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { NgModule, Provider } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -14,7 +14,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MaterialModule } from './material.module';
+import { AuthInterceptor } from './auth.intercaptor';
 
+const INTERCEPTOR_PROV: Provider = {
+  provide: HTTP_INTERCEPTORS,
+  multi: true,
+  useClass: AuthInterceptor
+};
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +44,7 @@ import { MaterialModule } from './material.module';
     MaterialModule
   ],
   providers: [
+    // INTERCEPTOR_PROV
   ],
   bootstrap: [AppComponent]
 })

@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="edit-group" *ngIf="form; else loading">
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <div class="form-control input-block" [ngClass]="{invalid: form.get('title')?.touched && form.get('title')?.invalid}">
+        <mat-form-field appearance="outline" class="example-form-field">
+          <mat-label>Title</mat-label>
+          <input formControlName="title" matInput type="text">
+        </mat-form-field>
+        <div *ngIf="form.get('title')?.touched && form.get('title')?.invalid" class="validation">
+          <small *ngIf="form.get('title')?.errors?.required">Введите название поста</small>
+        </div>
+      </div>
+
+      <div class="form-control">
+        <quill-editor formControlName="text"></quill-editor>
+      </div>
+      
+      <div class="edit-btn-block">
+        <button class="main-btn" [disabled]="form.invalid || submitted" type="submit" mat-raised-button color="primary">Изменить пост</button>
+      </div>
+
+    </form>
+  </div>
+  <ng-template #loading>
+    <div class="loader">
+      <mat-spinner></mat-spinner>
+      <p>Данные загружаются...</p>
+    </div>
+  </ng-template>
+</div>
+

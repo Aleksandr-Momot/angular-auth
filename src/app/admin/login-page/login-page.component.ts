@@ -30,6 +30,9 @@ export class LoginPageComponent implements OnInit {
       // tslint:disable-next-line: no-string-literal
       if (params['loginAgain']) {
         this.message = 'Введите данные для входа';
+      // tslint:disable-next-line: no-string-literal
+      } else if (params ['authFailed']) {
+        this.message = 'Время сессии вышло, попробуйте снова';
       }
     });
 

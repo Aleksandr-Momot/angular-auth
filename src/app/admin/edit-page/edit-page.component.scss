@@ -1,0 +1,33 @@
+.loader {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    p {
+        font-size: 30px;
+        margin-top: 20px;
+    }
+}
+
+.edit-group {
+    max-width: 600px;
+    margin: 0 auto;
+    .edit-btn-block {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
+    }
+    .mat-form-field {
+        max-width: 400px;
+        width: 100%;
+    }
+}
+
+.input-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 20px;
+}

@@ -1,0 +1,23 @@
+form {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#form-create {
+    .mat-form-field {
+        max-width: 400px;
+        width: 100%;
+        margin: 15px 0;
+    }
+}
+
+.quill-container {
+    max-width: 400px;
+    margin: 0 auto;
+    p {
+        font-size: 20px;
+        font-weight: 700;
+        margin: 15px 0;
+    }
+}
